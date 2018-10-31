@@ -6,6 +6,8 @@ type User {
   age: Int
   posts: [Post!]! @relation(name: "PostToUser", onDelete: CASCADE)
   comments: [Comment!]! @relation(name: "CommentToUser", onDelete: CASCADE)
+  updatedAt: DateTime!
+  createdAt: DateTime!
 }
 
 type Post {
@@ -15,6 +17,8 @@ type Post {
   published: Boolean!
   author: User! @relation(name: "PostToUser", onDelete: SET_NULL)
   comments: [Comment!]! @relation(name: "CommentToPost", onDelete: CASCADE)
+  updatedAt: DateTime!
+  createdAt: DateTime!
 }
 
 type Comment {
