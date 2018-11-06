@@ -1,2 +1,4 @@
 /node_modules
 node_modules
+gql-front/node_modules
+/gql-front/node_modules

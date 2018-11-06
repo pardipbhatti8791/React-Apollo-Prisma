@@ -8,7 +8,6 @@ const Query = {
             after: args.after,
             orderBy: args.orderBy
         }
-
         if (args.query) {
             opArgs.where = {
                 OR: [{
@@ -18,7 +17,6 @@ const Query = {
                 }]
             }
         }
-
         return  prisma.query.users(opArgs, info)
     }, 
     me(parent, args, { prisma, request }, info) {
@@ -39,7 +37,6 @@ const Query = {
                 published: true,
             }
         }
-
         if (args.query) {
             opArgs.where.OR = [{
                 title_contains: args.query
@@ -81,7 +78,6 @@ const Query = {
     },
     async post(parent, args, { prisma, request }, info) {
         const userId = getUserId(request, false)
-
         const posts = await prisma.query.posts({
             where: {
                 id: args.id,
@@ -93,11 +89,9 @@ const Query = {
                 ]
             }
         }, info)
-
         if (posts.length === 0) {
             throw new Error('Post not found')
         }
-
         return posts[0]
     }
 }
